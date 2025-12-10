@@ -1,31 +1,27 @@
-
 # Bulk IOC Analyzer
 **Investigation is Made Easy!**
 
-![Banner](A_logo_for_a_Bulk_IOC_(Indicators_of_Compromise)_A.png)
+![Banner](ioc-analyzer-logo.png)
 
-A GUI-based Python tool to perform **bulk reputation checks** for IOCs (Hashes, IPs, URLs/Domains) using the **VirusTotal** API. Paste lists of IOCs into the app, click *Start Analysis*, and get a polished, SOC-ready Excel report with recommended actions.
+A GUI-based Python tool to perform **bulk reputation checks** for IOCs (Hashes, IPs, Domains) using the **VirusTotal** API. Paste lists of IOCs into the GUI, click *Start Analysis*, and get a polished, Investigation-ready Excel report with separate sheet for each IOC type along with the recommended actions.
 
 ---
 
 ## 🔑 Quick Links
 - [Download the README.md](sandbox:/mnt/data/README.md)
 - [Download requirements.txt](sandbox:/mnt/data/requirements.txt)
-- Logo / Banner files included in repo:
-  - `A_logo_for_a_Bulk_IOC_(Indicators_of_Compromise)_A.png`
-  - `{"dataset":_"semantic_text_focused"}A_logo_for_the.png`
 
 ---
 
 ## What is this script for?
 Bulk IOC Analyzer simplifies threat-hunting and triage by automating reputation lookups against VirusTotal for multiple IOCs at once. Rather than checking items one-by-one, analysts can paste bulk lists and generate a single Excel file containing structured results and recommended actions.
 
-## Why this tool is different
-- **GUI-based**: Friendly interface — no terminal required.
-- **Multi-IOC input**: Submit hashes, IPs, and domains at once.
-- **Excel output**: Professional, formatted Excel workbook with separate sheets for each IOC type (Hashes, IPs, Domains).
+## Why this script is different from others?
+- **GUI-based**: Friendly interface — no terminal required for pasting your IOCs.
+- **Multi-IOC input**: Submit hashes, IPs, and Domains at once.
+- **Excel output**: Professional, well formatted Excel workbook with separate sheets for each IOC type (Hashes, IPs, Domains).
 - **Actionable**: Each IOC row includes a recommended **Action** (e.g., Block in EDR / Block in F/W / None).
-- **Ready for SOC reporting**: Color-coded highlights, auto column widths, and concise VT scores.
+- **Ready for reporting**: Color-coded highlights, auto column widths, and concise VT scores.
 - **Minimal setup**: Pure Python + standard libraries (plus pandas, requests, openpyxl).
 
 ## Requirements
@@ -37,33 +33,43 @@ Bulk IOC Analyzer simplifies threat-hunting and triage by automating reputation 
 Clone the repo or download files, then run:
 ```bash
 python -m pip install -r requirements.txt
-```
 
+## Example: How to run?
+![Banner](Example-1.png)
+
+```
 `requirements.txt` contains:
+
 ```
 requests
 pandas
 openpyxl
 ```
 
-## How to run
+## How to run?
 ```bash
-python ioc_analyzer.py
+python VirusTotal_Bulk_IOC_Reputation_Check.py
 ```
+## Example: How to run?
+![Banner](Example-2.png)
 
 ### GUI Usage
 1. Start the script (see command above).
-2. Enter your **VirusTotal API Key** in the top field.
-3. Paste your IOCs (one per line) into the respective boxes:
+2. Paste your **IOCs one per line** (no CSV support) into the respective boxes (masked entries are also accepted):
    - Hashes (MD5, SHA1, SHA256)
    - IP Addresses
-   - Domains / URLs
+   - Domains  
+3. Enter your **VirusTotal API Key** in the top field.
 4. Click **Start Analysis**.
-5. Monitor progress in the **Output** tab. A popup will confirm the Excel file location:
+5. A popup will confirm the name of the Excel file and location (it is the same direcotry from where the script is running).
+6. Check the file saved in the disk.
+
 
 ```
 IOC_Analysis_Results.xlsx
 ```
+## Example: GUI Usage?
+![Banner](Example-3.png)
 
 ## Output file format
 - **IOC_Analysis_Results.xlsx** — three sheets:
